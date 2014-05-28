@@ -160,6 +160,22 @@
 
 
 	/**
+	 * checks a given object has no property and can be considered as empty
+	 * @param {object} obj
+	 * @param {boolean} checkPrototype
+	 * @returns {Boolean}
+	 */
+	Object.isEmpty = Object.isEmpty || function(obj, checkPrototype) {
+		for (var key in obj) {
+			if (checkPrototype || hasOwnProperty.call(obj, key)) {
+				return false;
+			}
+		}
+		return true;
+	};
+
+
+	/**
 	 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf
 	 * @param {object} obj
 	 * @param {mixed} needle
