@@ -12,6 +12,7 @@ Extends the global Object object with a bunch of uberuseful methods for dealing 
 * [Object.findIndex()](#findIndex)
 * [Object.forEach()](#forEach)
 * [Object.getLength()](#getLength)
+* [Object.has()](#has)
 * [Object.indexOf()](#indexOf)
 * [Object.map()](#map)
 * [Object.merge()](#merge)
@@ -218,11 +219,14 @@ Elements which are appended to the object after the call to forEach begins will 
 If a thisArg parameter is provided to forEach, it will be passed to callback when invoked, for use as its this value. Otherwise, the value undefined will be passed for use as its this value. The this value ultimately observable by callback is determined according to the usual rules for determining the this seen by a function.
 
 ### Note
-There is no way to stop or break a forEach loop. The solution is to use Object.every or Object.some. See example below.*
+There is no way to stop or break a forEach loop. The solution is to use Object.every or Object.some. See example below.
 
 Object.forEach executes the callback function once for each object element; unlike every and some it does not return a value.
 
+<a name="getLength"/>
 ## Object.getLength()
+
+*Inspired by [].length*
 
 The Object.getLength() returns the number of properties in an object
 
@@ -237,6 +241,27 @@ Object.getLength(obj)
 ### Description
 
 Object.getLength() returns the number of properties in an object, like the array property "length"
+
+<a name="has"/>
+## Object.has()
+
+*Inspired by [_.has]*
+
+The Object.has() behaves like the vanilla Object.prototype.hasOwnProperty().
+
+```javascript
+Object.has(obj, key1, key2, ..., keyN)
+```
+
+#### Parameters
+
+**obj** the object
+
+**keyN** property keys
+
+### Description
+
+The Object.has() behaves like the vanilla Object.prototype.hasOwnProperty(), but is failsafe for objects with a property named hasOwnProperty and can consume up to n keys. If one of the provided keys can not be found, Object.has() returns false. Object.has() returns true, if all keys were found in the provided object.
 
 <a name="keyOf"/>
 ## Object.keyOf()
@@ -420,6 +445,7 @@ Object.subset(obj, keys);
 #### Parameters
 
 **obj** The object
+
 **keys** The keys that should be part of the new subset
 
 License
@@ -442,3 +468,5 @@ MIT
 
 [mootools.Object.values()]:http://mootools.net/docs/core/Types/Object#Object:Object-values
 [mootools.Object.subset()]:http://mootools.net/docs/core/Types/Object#Object:Object-subset
+
+[_.has()]:http://underscorejs.org/#has
