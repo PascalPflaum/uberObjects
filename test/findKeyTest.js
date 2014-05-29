@@ -6,7 +6,7 @@ if (typeof exports !== 'undefined') {
 	chai.use(sinonChai);
 	chai.config.includeStack = true;
 
-	require('../');
+	var uber = require('../')();
 }
 
 var expect = chai.expect;
@@ -16,7 +16,7 @@ describe('Object.findKey', function() {
 	it('{}, no iteration', function() {
 
 		var iterationSpy = sinon.spy();
-		var found = Object.findKey({}, iterationSpy);
+		var found = uber.findKey({}, iterationSpy);
 		expect(iterationSpy).have.not.been.called;
 		expect(found).to.be.undefined;
 
@@ -38,7 +38,7 @@ describe('Object.findKey', function() {
 			return !(item % 2);
 		});
 		
-		var found = Object.findKey(data, iterationSpy);
+		var found = uber.findKey(data, iterationSpy);
 		expect(found).to.be.equal('keyC');
 		expect(iterationSpy.callCount).to.be.below(Object.keys(data).length);
 

@@ -6,7 +6,7 @@ if (typeof exports !== 'undefined') {
 	chai.use(sinonChai);
 	chai.config.includeStack = true;
 
-	require('../');
+	var uber = require('../')();
 }
 
 var expect = chai.expect;
@@ -23,7 +23,7 @@ describe('Object.map', function() {
 	
 	it('{}, no iteration', function() {
 
-		var mapped = Object.filter({}, isBigEnoughSpy);
+		var mapped = uber.filter({}, isBigEnoughSpy);
 		expect(mapped).to.be.empty;
 		expect(isBigEnoughSpy).have.not.been.called;
 
@@ -35,7 +35,7 @@ describe('Object.map', function() {
 			keyA : 12, keyB : 54, keyC : 18, keyD : 130, keyE : 44
 		};
 		
-		var mapped = Object.map(obj, isBigEnoughSpy);
+		var mapped = uber.map(obj, isBigEnoughSpy);
 		expect(mapped).to.be.an.object;
 		expect(isBigEnoughSpy).to.have.callCount(Object.keys(obj).length);
 		expect(mapped).to.be.deep.equal({
@@ -50,7 +50,7 @@ describe('Object.map', function() {
 			keyA : 12, keyB : 5, keyC : 8, keyD : 130, keyE : 44
 		};
 
-		var mapped = Object.map(obj, isBigEnoughSpy);
+		var mapped = uber.map(obj, isBigEnoughSpy);
 		expect(mapped).to.be.an.object;
 		expect(isBigEnoughSpy).to.have.callCount(Object.keys(obj).length);
 		expect(mapped).to.be.deep.equal({

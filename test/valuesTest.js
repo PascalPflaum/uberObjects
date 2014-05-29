@@ -6,7 +6,7 @@ if (typeof exports !== 'undefined') {
 	chai.use(sinonChai);
 	chai.config.includeStack = true;
 
-	require('../');
+	var uber = require('../')();
 }
 
 var expect = chai.expect;
@@ -15,7 +15,7 @@ describe('Object.values', function() {
 
 	it('empty object, empty values', function() {
 
-		expect(Object.values({})).to.be.instanceof(Array).and.to.be.empty;
+		expect(uber.values({})).to.be.instanceof(Array).and.to.be.empty;
 
 	});
 
@@ -25,7 +25,7 @@ describe('Object.values', function() {
 			keyA : 12, keyB : 54, keyC : 18, keyD : 130, keyE : 44
 		};
 
-		expect(Object.values(obj)).to.be.deep.equal([12, 54, 18, 130, 44]);
+		expect(uber.values(obj)).to.be.deep.equal([12, 54, 18, 130, 44]);
 
 	});
 

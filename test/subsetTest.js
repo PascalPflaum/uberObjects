@@ -6,7 +6,7 @@ if (typeof exports !== 'undefined') {
 	chai.use(sinonChai);
 	chai.config.includeStack = true;
 
-	require('../');
+	var uber = require('../')();
 }
 
 var expect = chai.expect;
@@ -15,7 +15,7 @@ describe('Object.subset', function() {
 
 	it('empty object, some values', function() {
 
-		expect(Object.subset({}, ['a', 'b'])).to.be.deep.equal({});
+		expect(uber.subset({}, ['a', 'b'])).to.be.deep.equal({});
 
 	});
 
@@ -25,7 +25,7 @@ describe('Object.subset', function() {
 			keyA : 12, keyB : 54, keyC : 18, keyD : 130, keyE : 44
 		};
 
-		expect(Object.subset(obj, ['keyC', 'keyD'])).to.be.deep.equal({
+		expect(uber.subset(obj, ['keyC', 'keyD'])).to.be.deep.equal({
 			keyC : 18, keyD : 130
 		});
 

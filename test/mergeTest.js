@@ -6,7 +6,7 @@ if (typeof exports !== 'undefined') {
 	chai.use(sinonChai);
 	chai.config.includeStack = true;
 
-	require('../');
+	var uber = require('../')();
 }
 
 var expect = chai.expect;
@@ -15,7 +15,7 @@ describe('Object.merge', function() {
 
 	it('merging two simple objects', function() {
 
-		var newObj = Object.merge({'key1' : 'value1'}, {'key2' : 'value2'});
+		var newObj = uber.merge({'key1' : 'value1'}, {'key2' : 'value2'});
 		expect(newObj).to.be.deep.equal({
 			'key1' : 'value1',
 			'key2' : 'value2'
@@ -28,7 +28,7 @@ describe('Object.merge', function() {
 		var obj1 = {'key1' : 'value1'};
 		var obj2 = {'key2' : 'value2'};
 
-		var newObj = Object.merge(obj1, obj2);
+		var newObj = uber.merge(obj1, obj2);
 
 		delete obj1.key1;
 		delete obj2.key2;

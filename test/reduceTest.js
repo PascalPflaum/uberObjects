@@ -6,7 +6,7 @@ if (typeof exports !== 'undefined') {
 	chai.use(sinonChai);
 	chai.config.includeStack = true;
 
-	require('../');
+	var uber = require('../')();
 }
 
 var expect = chai.expect;
@@ -23,7 +23,7 @@ describe('Object.reduce', function() {
 			keyA : 0, keyB : 1, keyC : 2, keyD : 3, keyE : 4
 		};
 
-		var reduction = Object.reduce(obj, reductionSpy);
+		var reduction = uber.reduce(obj, reductionSpy);
 		expect(reduction).to.be.equal(10);
 
 	});
@@ -34,14 +34,14 @@ describe('Object.reduce', function() {
 			keyA : 0, keyB : 1, keyC : 2, keyD : 3, keyE : 4
 		};
 
-		var reduction = Object.reduce(obj, reductionSpy, 100);
+		var reduction = uber.reduce(obj, reductionSpy, 100);
 		expect(reduction).to.be.equal(110);
 
 	});
 
 	it('error for neither initial value, nor iteration', function() {
 		expect(function() {
-			Object.reduce({}, function() {
+			uber.reduce({}, function() {
 			});
 		}).to.throw(/neither initial value nor object properties to iterate/);
 	});
@@ -51,7 +51,7 @@ describe('Object.reduce', function() {
 	//or if initialValue is provided but the array is empty, the solo value would be returned without calling callback.
 	it('object with single item and no initial value', function() {
 
-		var reduced = Object.reduce({'a' : 'b'}, function() {
+		var reduced = uber.reduce({'a' : 'b'}, function() {
 			return;
 		});
 
@@ -64,7 +64,7 @@ describe('Object.reduce', function() {
 	//or if initialValue is provided but the array is empty, the solo value would be returned without calling callback.
 	it('object with not item, but initial value', function() {
 
-		var reduced = Object.reduce({}, function() {
+		var reduced = uber.reduce({}, function() {
 			return;
 		}, 'b');
 

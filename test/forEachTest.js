@@ -6,7 +6,7 @@ if (typeof exports !== 'undefined') {
 	chai.use(sinonChai);
 	chai.config.includeStack = true;
 
-	require('../');
+	var uber = require('../')();
 }
 
 var expect = chai.expect;
@@ -16,7 +16,7 @@ describe('Object.forEach', function() {
 	it('{}, no iteration', function() {
 		
 		var iterationSpy = sinon.spy();
-		Object.forEach({}, iterationSpy);
+		uber.forEach({}, iterationSpy);
 		expect(iterationSpy).have.not.been.called;
 		
 	});
@@ -24,7 +24,7 @@ describe('Object.forEach', function() {
 	it('one iteration', function() {
 		
 		var iterationSpy = sinon.spy();
-		Object.forEach({'key':'value'}, iterationSpy);
+		uber.forEach({'key':'value'}, iterationSpy);
 		expect(iterationSpy).have.been.calledOnce;
 		expect(iterationSpy).have.been.calledWithExactly('value','key');
 		

@@ -6,7 +6,7 @@ if (typeof exports !== 'undefined') {
 	chai.use(sinonChai);
 	chai.config.includeStack = true;
 
-	require('../');
+	var uber = require('../')();
 }
 
 var expect = chai.expect;
@@ -25,7 +25,7 @@ describe('Object.find', function() {
 
 		
 		
-		var found = Object.keyOf(data, 211);
+		var found = uber.keyOf(data, 211);
 		expect(found).to.be.equal('keyB');
 
 	});
@@ -42,7 +42,7 @@ describe('Object.find', function() {
 
 		
 		
-		var found = Object.keyOf(data, 212);
+		var found = uber.keyOf(data, 212);
 		expect(found).to.be.undefined;
 
 	});

@@ -6,7 +6,7 @@ if (typeof exports !== 'undefined') {
 	chai.use(sinonChai);
 	chai.config.includeStack = true;
 
-	require('../');
+	var uber = require('../')();
 }
 
 var expect = chai.expect;
@@ -16,29 +16,29 @@ describe('Object.has', function() {
 	it('empty', function() {
 
 		var obj = {};
-		expect(Object.has(obj, 'keyA')).to.be.false;
+		expect(uber.has(obj, 'keyA')).to.be.false;
 
 	});
 
 	it('single property', function() {
 
 		var obj = {keyA : 'dataA'};
-		expect(Object.has(obj, 'keyA')).to.be.true;
-		expect(Object.has(obj, 'false')).to.be.false;
+		expect(uber.has(obj, 'keyA')).to.be.true;
+		expect(uber.has(obj, 'false')).to.be.false;
 
 	});
 
 	it('several properties property, found all', function() {
 
 		var obj = {keyA : 'dataA', keyB : 'dataB'};
-		expect(Object.has(obj, 'keyA', 'keyB')).to.be.true;
+		expect(uber.has(obj, 'keyA', 'keyB')).to.be.true;
 
 	});
 	
 	it('several properties property, found just one', function() {
 
 		var obj = {keyA : 'dataA', keyB : 'dataB'};
-		expect(Object.has(obj, 'keyA', 'keyC')).to.be.false;
+		expect(uber.has(obj, 'keyA', 'keyC')).to.be.false;
 
 	});
 
@@ -48,7 +48,7 @@ describe('Object.has', function() {
 			hasOwnProperty : 12
 		};
 		
-		expect(Object.has(obj, 'hasOwnProperty')).to.be.true;
+		expect(uber.has(obj, 'hasOwnProperty')).to.be.true;
 
 	});
 

@@ -3,6 +3,27 @@
 
 Extends the global Object object with a bunch of uberuseful methods for dealing with object
 
+## How to use
+
+### Browser
+
+```javascript
+<script type="text/javascript" src="../uberObjects.js"></script>
+<script type="text/javascript" >var uber = initUberObjects();</script>
+```
+
+### Node.js
+
+Assign to variable
+```javascript
+var uber = require('../')();
+```
+
+Or mix in existing object
+```javascript
+require('../')(Object);
+```
+
 ## Methods
 
 * [Object.every()](#every)
@@ -246,7 +267,7 @@ Object.getLength() returns the number of properties in an object, like the array
 <a name="has"/>
 ## Object.has()
 
-*Inspired by [_.has]*
+*Inspired by [_.has()]*
 
 The Object.has() behaves like the vanilla Object.prototype.hasOwnProperty().
 

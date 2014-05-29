@@ -6,7 +6,7 @@ if (typeof exports !== 'undefined') {
 	chai.use(sinonChai);
 	chai.config.includeStack = true;
 
-	require('../');
+	var uber = require('../')();
 }
 
 var expect = chai.expect;
@@ -18,14 +18,14 @@ describe('Object.isEmpty', function() {
 		it('empty', function() {
 
 			var obj = {};
-			expect(Object.isEmpty(obj)).to.be.true;
+			expect(uber.isEmpty(obj)).to.be.true;
 
 		});
 
 		it('single property', function() {
 
 			var obj = {keyA : 'dataA'};
-			expect(Object.isEmpty(obj)).to.be.false;
+			expect(uber.isEmpty(obj)).to.be.false;
 
 		});
 
@@ -40,7 +40,7 @@ describe('Object.isEmpty', function() {
 		it('empty', function() {
 
 			var obj = new TestObj();
-			expect(Object.isEmpty(obj, true)).to.be.true;
+			expect(uber.isEmpty(obj, true)).to.be.true;
 
 		});
 
@@ -49,7 +49,7 @@ describe('Object.isEmpty', function() {
 			TestObj.prototype.keyA = false;
 
 			var obj = new TestObj();
-			expect(Object.isEmpty(obj, true)).to.be.false;
+			expect(uber.isEmpty(obj, true)).to.be.false;
 
 		});
 

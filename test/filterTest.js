@@ -6,7 +6,7 @@ if (typeof exports !== 'undefined') {
 	chai.use(sinonChai);
 	chai.config.includeStack = true;
 
-	require('../');
+	var uber = require('../')();
 }
 
 var expect = chai.expect;
@@ -16,7 +16,7 @@ describe('Object.filter', function() {
 	it('{}, no iteration', function() {
 
 		var iterationSpy = sinon.spy();
-		Object.filter({}, iterationSpy);
+		uber.filter({}, iterationSpy);
 		expect(iterationSpy).have.not.been.called;
 
 	});
@@ -37,7 +37,7 @@ describe('Object.filter', function() {
 			return !!item;
 		});
 		
-		var filtered = Object.filter(data, iterationSpy);
+		var filtered = uber.filter(data, iterationSpy);
 		expect(filtered).to.be.deep.equal({'keyA' : true, 'keyB' : true, 'keyD' : true});
 		expect(iterationSpy).to.have.callCount(Object.keys(data).length);
 

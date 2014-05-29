@@ -6,7 +6,7 @@ if (typeof exports !== 'undefined') {
 	chai.use(sinonChai);
 	chai.config.includeStack = true;
 
-	require('../');
+	var uber = require('../')();
 }
 
 var expect = chai.expect;
@@ -15,7 +15,7 @@ describe('Object.extend', function() {
 
 	it('extending an empty object with some properties, from two different objects', function() {
 
-		var newObj = Object.extend({}, {'key1' : 'value1'}, {'key2' : 'value2'});
+		var newObj = uber.extend({}, {'key1' : 'value1'}, {'key2' : 'value2'});
 		expect(newObj).to.be.deep.equal({
 			'key1' : 'value1',
 			'key2' : 'value2'
@@ -28,7 +28,7 @@ describe('Object.extend', function() {
 		var obj1 = {'key1' : 'value1'};
 		var obj2 = {'key1' : 'value2'};
 
-		var newObj = Object.merge(obj1, obj2);
+		var newObj = uber.merge(obj1, obj2);
 
 
 		expect(newObj).to.be.deep.equal({
