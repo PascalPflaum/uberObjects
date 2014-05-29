@@ -8,8 +8,7 @@ Extends the global Object object with a bunch of uberuseful methods for dealing 
 ### Browser
 
 ```javascript
-<script type="text/javascript" src="../uberObjects.js"></script>
-<script type="text/javascript" >var uber = initUberObjects();</script>
+var uber = initUberObjects();
 ```
 
 ### Node.js
