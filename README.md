@@ -7,6 +7,11 @@ Provides a bunch of useful methods related to objects. Can be assigned to a vari
 
 ### Browser
 
+Include via script
+```javascript
+var uber = initUberObjects();
+```
+
 Either assign to variable
 ```javascript
 var uber = initUberObjects();
@@ -19,6 +24,11 @@ initUberObjects(Object);
 
 
 ### Node.js
+
+Include via npm
+```javascript
+npm install uber.objects
+```
 
 Either assign to variable
 ```javascript

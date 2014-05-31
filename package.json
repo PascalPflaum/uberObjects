@@ -1,29 +1,36 @@
 {
-  "author": "Pascal Pflaum <pascal@heutewirdnichtmehrgearbeitet.de>",
-  "name": "ObjectsLikeArrays",
-  "description": "Add most of the Array.prototype methods to the Object namespace",
-  "version": "0.0.1",
-  "contributors": [
-    "Pascal Pflaum <pascal@heutewirdnichtmehrgearbeitet.de>"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/PascalPflaum/ObjectsLikeArrays.git"
-  },
-  "main": "uberObjects.js",
-  "scripts": {
-    "test": "mocha"
-  },
-  "dependencies": {
-  },
-  "devDependencies": {
-    "sinon": "~1.9.1",
-    "chai": "~1.9.1",
-    "sinon-chai": "~2.5.0",
-    "mocha": "~1.19.0",
-    "benchmark": "~1.0.0"},
-  "keywords": [
-    "Object.forEach",
-    "Object.concat"
-  ]
+	"author": "Pascal Pflaum <pascal@heutewirdnichtmehrgearbeitet.de>",
+	"name": "uber.objects",
+	"description": "Add most of the Array.prototype methods to the Object namespace",
+	"version": "0.0.1",
+	"contributors": [
+		"Pascal Pflaum <pascal@heutewirdnichtmehrgearbeitet.de>"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/PascalPflaum/ObjectsLikeArrays.git"
+	},
+	"main": "uberObjects.js",
+	"scripts": {
+		"test": "mocha"
+	},
+	"dependencies": {
+	},
+	"devDependencies": {
+		"sinon": "~1.9.1",
+		"chai": "~1.9.1",
+		"sinon-chai": "~2.5.0",
+		"mocha": "~1.19.0",
+		"benchmark": "~1.0.0"
+	},
+	"keywords": [
+		"Object.forEach",
+		"Object.concat"
+	],
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "https://raw.github.com/visionmedia/mocha/master/LICENSE"
+		}
+	]
 }
