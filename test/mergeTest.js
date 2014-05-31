@@ -12,7 +12,26 @@ if (typeof exports !== 'undefined') {
 var expect = chai.expect;
 
 describe('Object.merge', function() {
-
+	
+	it('copy if called with one argument', function() {
+		
+		var original = {
+			'key1' : 'value1',
+			'key2' : 'value2',
+			'nested' : {
+				n1 : 'a',
+				n2 : 'a'
+			}
+		};
+		var newObj = uber.merge(original);
+		expect(newObj).to.be.not.equal(original);
+		expect(newObj).to.be.deep.equal(original);
+		expect(newObj.nested).to.be.equal(original.nested);
+		
+		
+		
+	});
+	
 	it('merging two simple objects', function() {
 
 		var newObj = uber.merge({'key1' : 'value1'}, {'key2' : 'value2'});

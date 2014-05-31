@@ -237,8 +237,22 @@
 			Array.prototype.unshift.call(arguments, {});
 			return target.extend.apply(this, arguments);
 		};
-
-
+		target.copy = target.copy || target.merge;
+		
+		
+		/**
+		 * a very simple, but effective way to deep copy data
+		 * @param {type} obj
+		 * @returns {Array|Object}
+		 */
+		target.deepCopy = target.deepCopy || function(obj) {
+			if (obj === undefined) {
+				return undefined;
+			}
+			
+			return JSON.parse(JSON.stringify(obj));
+		};
+		
 		/**
 		 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
 		 * @param {object} obj
