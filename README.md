@@ -8,8 +8,8 @@ Provides a bunch of useful methods related to objects. Can be assigned to a vari
 ### Browser
 
 Include via script
-```javascript
-var uber = initUberObjects();
+```html
+<script src="uberObjects.js"></script>
 ```
 
 Either assign to variable

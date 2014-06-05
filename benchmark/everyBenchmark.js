@@ -1,59 +1,94 @@
 var Benchmark = require('benchmark');
-require('../');
+var uber = require('../')();
 
+var underscore = require('underscore');
+var lodash = require('lodash');
+var mootools = require('mootools');
 
 // add tests
 (function() {
 
-	var suite = new Benchmark.Suite;
-
-	var testObj = {
-		keyA : 12, keyB : 54, keyC : 18, keyD : 130, keyE : 44
-	};
-	var testArr = Object.values(testObj);
-
+	var testName = 'every()';
+	
 	function isBigEnough(element, index, object) {
-		return (element >= 10);
+		return (element >= 0);
 	}
 
-	suite
-			.add('Object.every()', function() {
-				Object.every(testObj, isBigEnough);
-			})
+	function makeRandomString(length)
+	{
+		var text = "";
+		var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-			.add('Object manuall iteration', function() {
-				var every = true;
-				for (var key in testObj) {
-					if (testObj.hasOwnProperty(key)) {
-						if (!isBigEnough(testObj[key])) {
-							every = false;
-							break;
+		for (var i = 0; i < length; i++)
+			text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+		return text;
+	}
+
+	function addSampleTests(sampleSize) {
+
+		var testObj = {};
+
+		while (uber.getLength(testObj) < sampleSize) {
+			var key = makeRandomString(10);
+			var value = Math.random * 10000;
+			testObj[key] = value;
+		}
+		
+		console.log('---------------------------------');
+		console.log(testName + ' Size: ' + sampleSize);
+		console.log('---------------------------------');
+
+		var suite = new Benchmark.Suite;
+		suite
+				.add('manuall iteration', function() {
+					var every = true;
+					for (var key in testObj) {
+						if (testObj.hasOwnProperty(key)) {
+							if (!isBigEnough(testObj[key])) {
+								every = false;
+								break;
+							}
 						}
 					}
-				}
-			})
-			.add('Array.prototype.every()', function() {
-				testArr.every(isBigEnough);
-			})
+				})
 
-			.add('Array manuall iteration', function() {
-				var every = true;
-				for (var key = 0; key < testArr.length; key++) {
-					if (!isBigEnough(testObj[key])) {
-						every = false;
-						break;
-					}
-				}
-			})
+				//uberObjects
+				.add('uberObject', function() {
+					uber.every(testObj, isBigEnough);
+				})
 
+				//underscore.js
+				.add('underscore.js', function() {
+					underscore.every(testObj, isBigEnough);
+				})
 
-			// add listeners
-			.on('cycle', function(event) {
-				console.log(String(event.target));
-			})
-			.on('complete', function() {
-				console.log('Fastest is ' + this.filter('fastest').pluck('name'));
-			})
-			// run async
-			.run({'async' : true});
+				//mootools extends the native Objects
+				.add('mootools.js', function() {
+					Object.every(testObj, isBigEnough);
+				})
+
+				//Lo-Dash
+				.add('lodash.js', function() {
+					lodash.every(testObj, isBigEnough);
+				})
+
+				// add listeners
+				.on('cycle', function(event) {
+					console.log(String(event.target));
+				})
+				.on('complete', function() {
+					console.log('Fastest is ' + this.filter('fastest').pluck('name'));
+				})
+				// run async
+				.run();
+
+		return suite;
+	}
+
+	addSampleTests(10);
+	addSampleTests(100);
+	addSampleTests(1000);
+	addSampleTests(10000);
+
 })();
