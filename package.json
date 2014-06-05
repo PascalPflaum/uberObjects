@@ -1,39 +1,54 @@
 {
-  "author": "Pascal Pflaum <pascal@heutewirdnichtmehrgearbeitet.de>",
-  "name": "uber.objects",
-  "description": "Add most of the Array.prototype methods to the Object namespace",
-  "version": "0.0.2",
-  "contributors": [
-    "Pascal Pflaum <pascal@heutewirdnichtmehrgearbeitet.de>"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/PascalPflaum/ObjectsLikeArrays.git"
-  },
-  "main": "uberObjects.js",
-  "scripts": {
-    "test": "mocha"
-  },
-  "dependencies": {
-  },
-  "devDependencies": {
-    "mootools": "~1.4.5-2",
-    "underscore": "~1.6.0",
-    "lodash": "~2.4.1",
-    "sinon": "~1.9.1",
-    "chai": "~1.9.1",
-    "sinon-chai": "~2.5.0",
-    "mocha": "~1.19.0",
-    "benchmark": "~1.0.0"
-  },
-  "keywords": [
-    "Object.forEach",
-    "Object.concat"
-  ],
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://raw.github.com/visionmedia/mocha/master/LICENSE"
-    }
-  ]
+	"author": "Pascal Pflaum <pascal@heutewirdnichtmehrgearbeitet.de>",
+	"name": "uber.objects",
+	"description": "very lightweight function collection to work in an advanced way with objects",
+	"version": "0.0.3",
+	"contributors": [
+		"Pascal Pflaum <pascal@heutewirdnichtmehrgearbeitet.de>"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/PascalPflaum/uberObjects.git"
+	},
+	"main": "uberObjects.js",
+	"scripts": {
+		"test": "mocha"
+	},
+	"dependencies": {
+	},
+	"devDependencies": {
+		"mootools": "~1.4.5-2",
+		"underscore": "~1.6.0",
+		"lodash": "~2.4.1",
+		"sinon": "~1.9.1",
+		"chai": "~1.9.1",
+		"sinon-chai": "~2.5.0",
+		"mocha": "~1.19.0",
+		"benchmark": "~1.0.0"
+	},
+	"keywords": [
+		"Object",
+		"every",
+		"extend",
+		"filter",
+		"findKey",
+		"find",
+		"forEach",
+		"getLength",
+		"has",
+		"isEmpty",
+		"keyOf",
+		"map",
+		"merge",
+		"reduce",
+		"some",
+		"subset",
+		"values"
+	],
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "https://raw.github.com/visionmedia/mocha/master/LICENSE"
+		}
+	]
 }
