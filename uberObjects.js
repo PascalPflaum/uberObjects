@@ -92,10 +92,10 @@
 		 */
 		target.find = target.find || function(obj, findFunc, thisArg) {
 
-			//using the .findIndex method saves some lines of code and duplicity
-			var idx = target.findKey.apply(this, arguments);
-			if (idx !== undefined) {
-				return obj[idx];
+			for (var key in obj) {
+				if (hasOwnProperty.call(obj, key) && findFunc.call(thisArg, obj[key], key, obj)) {
+					return obj[key];
+				}
 			}
 		};
 
@@ -109,10 +109,6 @@
 		 * @return {string} the key of the found element
 		 */
 		target.findKey = target.findKey || function(obj, findFunc, thisArg) {
-
-			if (typeof findFunc !== 'function') {
-				throw new TypeError();
-			}
 
 			for (var key in obj) {
 				if (hasOwnProperty.call(obj, key) && findFunc.call(thisArg, obj[key], key, obj)) {

@@ -8,10 +8,10 @@ require('mootools');
 // add tests
 (function() {
 
-	var testName = 'every()';
-	
-	function isBigEnough(element, index, object) {
-		return (element >= 0);
+	var testName = 'find()';
+
+	function oddNumber(element) {
+		return (element % 2 === 1);
 	}
 
 	function makeRandomString(length)
@@ -28,13 +28,24 @@ require('mootools');
 	function addSampleTests(sampleSize) {
 
 		var testObj = {};
+		debugger;
+		while (uber.getLength(testObj) < sampleSize - 1) {
+			var key = makeRandomString(10);
+			var value = Math.floor(Math.random() * 1000000);
+			if (value % 2 !== 1) {
+				testObj[key] = value;
+			}
+		}
 
+		//now add one odd number
 		while (uber.getLength(testObj) < sampleSize) {
 			var key = makeRandomString(10);
-			var value = Math.random * 10000;
-			testObj[key] = value;
+			var value = Math.floor(Math.random() * 1000000);
+			if (value % 2 === 1) {
+				testObj[key] = value;
+			}
 		}
-		
+
 		console.log('---------------------------------');
 		console.log(testName + ' Size: ' + sampleSize);
 		console.log('---------------------------------');
@@ -42,11 +53,11 @@ require('mootools');
 		var suite = new Benchmark.Suite;
 		suite
 				.add('manuall iteration', function() {
-					var every = true;
+					var foundElement;
 					for (var key in testObj) {
 						if (testObj.hasOwnProperty(key)) {
-							if (!isBigEnough(testObj[key])) {
-								every = false;
+							if (!oddNumber(testObj[key])) {
+								foundElement = testObj[key];
 								break;
 							}
 						}
@@ -55,22 +66,19 @@ require('mootools');
 
 				//uberObjects
 				.add('uberObject', function() {
-					uber.every(testObj, isBigEnough);
+					uber.find(testObj, oddNumber);
 				})
 
 				//underscore.js
 				.add('underscore.js', function() {
-					underscore.every(testObj, isBigEnough);
+					underscore.find(testObj, oddNumber);
 				})
 
-				//mootools extends the native Objects
-				.add('mootools.js', function() {
-					Object.every(testObj, isBigEnough);
-				})
+				//mootools does not have a find method
 
 				//Lo-Dash
 				.add('lodash.js', function() {
-					lodash.every(testObj, isBigEnough);
+					lodash.find(testObj, oddNumber);
 				})
 
 				// add listeners
