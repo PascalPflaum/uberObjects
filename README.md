@@ -32,12 +32,12 @@ npm install uber.objects
 
 Either assign to variable
 ```javascript
-var uber = require('../')();
+var uber = require('uber.objects')();
 ```
 
 Or mix in existing object
 ```javascript
-require('../')(Object);
+require('uber.objects')(Object);
 ```
 
 ## Methods
