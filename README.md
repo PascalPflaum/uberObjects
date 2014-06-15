@@ -58,8 +58,9 @@ require('../')(Object);
 * [uber.merge()](#merge)
 * [uber.reduce()](#reduce)
 * [uber.some()](#some)
-* [uber.values()](#values)
 * [uber.subset()](#subset)
+* [uber.values()](#values)
+* [uber.without()](#without)
 
 <a name="copy"/>
 ## uber.copy()
@@ -516,7 +517,7 @@ uber.values(obj);
 
 *Inspired by [mootools.Object.subset()]*
 
-The uber.values() returns an array containing all the values, in the same order as the keys returned by uber.keys().
+uber.subset() returns an subset of the given object.
 
 ### Syntax
 
@@ -529,6 +530,25 @@ uber.subset(obj, keys);
 **obj** The object
 
 **keys** The keys that should be part of the new subset
+
+<a name="without"/>
+## uber.without()
+
+*Inspired by [_.omit()]*
+
+uber.without() returns an subset of the given object without the keys in the given array of keys.
+
+### Syntax
+
+```javascript
+uber.without(obj, keys);
+```
+
+#### Parameters
+
+**obj** The object
+
+**keys** The keys that should not be in the new object
 
 License
 ----
@@ -554,3 +574,4 @@ MIT
 
 [_.has()]:http://underscorejs.org/#has
 [_.isEmpty()]:http://underscorejs.org/#isEmpty
+[_.omit()]:http://underscorejs.org/#omit

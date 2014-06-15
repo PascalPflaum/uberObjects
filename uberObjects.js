@@ -316,6 +316,32 @@
 
 
 		/**
+		 * Object.subset() returns a subset based on the given object and the gives given in an additional array
+		 * @param {type} obj
+		 * @param {type} keys
+		 * @returns {object}
+		 */
+		target.subset = target.subset || function(obj, keys) {
+			
+			//the whitelist can be passed as array or several arguments
+			if (arguments.length > 2) {
+				keys = Array.prototype.slice.call(arguments, 1);
+			}
+			
+			var values = {};
+
+			for (var i = 0, length = keys.length; i < length; i++) {
+				var key = keys[i];
+				if (hasOwnProperty.call(obj, key)) {
+					values[key] = obj[key];
+				}
+			}
+
+			return values;
+		};
+		
+		
+		/**
 		 * Object.values() returns an array containing all the values, in the same order as the keys returned by Object.keys().
 		 * @param {type} obj
 		 * @returns {array}
@@ -339,13 +365,12 @@
 		 * @param {type} keys
 		 * @returns {object}
 		 */
-		target.subset = target.subset || function(obj, keys) {
+		target.without = target.without || function(obj, keys) {
 
 			var values = {};
 
-			for (var i = 0, length = keys.length; i < length; i++) {
-				var key = keys[i];
-				if (hasOwnProperty.call(obj, key)) {
+			for (var key in obj) {
+				if (hasOwnProperty.call(obj, key) && keys.indexOf(key) === -1) {
 					values[key] = obj[key];
 				}
 			}
