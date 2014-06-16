@@ -2,7 +2,7 @@
 	"author": "Pascal Pflaum <pascal@heutewirdnichtmehrgearbeitet.de>",
 	"name": "uber.objects",
 	"description": "very lightweight function collection to work in an advanced way with objects",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"contributors": [
 		"Pascal Pflaum <pascal@heutewirdnichtmehrgearbeitet.de>"
 	],
