@@ -43,7 +43,6 @@ require('uber.objects')(Object);
 ## Methods
 
 * [uber.copy()](#copy)
-* [uber.deepCopy()](#copy)
 * [uber.every()](#every)
 * [uber.extend()](#extend)
 * [uber.filter()](#filter)
@@ -67,7 +66,7 @@ require('uber.objects')(Object);
 
 *Alias for [uber.merge()](#merge)*
 
-The uber.copy() creates a shallow copy of an provided object.
+The uber.copy() creates a fullcopy of an object. All references between the objects are removed.
 
 ### Syntax
 
@@ -81,7 +80,7 @@ uber.copy(obj)
 
 ### Description
 
-The uber.copy() creates a shallow copy of a object. It is an alias for the uber.merge() method, which provides this functionality, if called with one argument.
+The uber.copy() creates a copy of a object.
 
 <a name="every"/>
 ## uber.every()

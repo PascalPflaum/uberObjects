@@ -13,7 +13,7 @@ var expect = chai.expect;
 
 describe('Object.merge', function() {
 	
-	it('copy if called with one argument', function() {
+	it('shallowcopy if called with one argument', function() {
 		
 		var original = {
 			'key1' : 'value1',

@@ -233,7 +233,6 @@
 			Array.prototype.unshift.call(arguments, {});
 			return target.extend.apply(this, arguments);
 		};
-		target.copy = target.copy || target.merge;
 		
 		
 		/**
@@ -241,7 +240,7 @@
 		 * @param {type} obj
 		 * @returns {Array|Object}
 		 */
-		target.deepCopy = target.deepCopy || function(obj) {
+		target.copy = target.copy || function(obj) {
 			if (obj === undefined) {
 				return undefined;
 			}
